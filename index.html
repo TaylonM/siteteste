@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamisetaStyle | Camisas de Qualidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="logo">
+                <h1>CamisetaStyle</h1>
+            </div>
+            <button id="sidebarToggle" class="menu-toggle" aria-label="Abrir menu">⋯</button>
+        </div>
+        <nav class="nav" id="navMenu">
+            <a href="#home" class="nav-link"><span class="text">Início</span></a>
+            <a href="#produtos" class="nav-link"><span class="text">Produtos</span></a>
+            <a href="cadastro.html" class="nav-link"><span class="text">Cadastro</span></a>
+            <a href="login.html" class="nav-link"><span class="text">Login</span></a>
+            <a href="#sobre" class="nav-link"><span class="text">Sobre</span></a>
+            <a href="#contato" class="nav-link"><span class="text">Contato</span></a>
+        </nav>
+        <div class="side-actions">
+            <div id="userStatus" class="user-status"></div>
+            <button type="button" class="cart-button" onclick="toggleCart()">
+                <span class="cart-count" id="cartCount">0</span>
+                🛒 Carrinho
+            </button>
+        </div>
+    </aside>
+
+    <!-- BANNER -->
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h2>Camisas de Qualidade Premium</h2>
+            <p>Descubra nosso catálogo exclusivo de camisetas estilosas</p>
+            <a href="#produtos" class="btn-primary">Ver Coleção</a>
+        </div>
+    </section>
+
+    <!-- FILTROS -->
+    <section class="filtros-section">
+        <div class="container">
+            <h3>Filtrar por:</h3>
+            <div class="filtros">
+                <button class="filtro-btn active" onclick="filtrar('todos', event)">Todos</button>
+                <button class="filtro-btn" onclick="filtrar('masculino', event)">Masculino</button>
+                <button class="filtro-btn" onclick="filtrar('feminino', event)">Feminino</button>
+                <button class="filtro-btn" onclick="filtrar('unissex', event)">Unissex</button>
+            </div>
+            <div class="ordenacao">
+                <select id="ordenar" onchange="ordenarProdutos(this.value)">
+                    <option value="popular">Mais Popular</option>
+                    <option value="preco-baixo">Preço: Menor</option>
+                    <option value="preco-alto">Preço: Maior</option>
+                    <option value="novo">Mais Novo</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="produtos-section" id="produtos">
+        <div class="container">
+            <h2>Nossos Produtos</h2>
+            <div class="produtos-grid" id="produtosGrid">
+                <!-- Produtos serão inseridos aqui via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DETALHES DO PRODUTO -->
+    <div class="modal" id="modalProduto">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-imagem">
+                    <div id="modalImg" class="modal-emoji"></div>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalNome"></h2>
+                    <p id="modalDescricao" class="modal-descricao"></p>
+                    <div class="modal-detalhes">
+                        <p><strong>Categoria:</strong> <span id="modalCategoria"></span></p>
+                        <p><strong>Material:</strong> <span id="modalMaterial"></span></p>
+                        <p><strong>Tamanhos:</strong> <span id="modalTamanhos"></span></p>
+                    </div>
+                    <div class="modal-cores">
+                        <strong>Cores:</strong>
+                        <div id="coresContainer" class="cores-container"></div>
+                    </div>
+                    <div class="modal-tamanho">
+                        <label for="selecionarTamanho"><strong>Tamanho:</strong></label>
+                        <select id="selecionarTamanho">
+                            <option value="">Selecione um tamanho</option>
+                            <option value="P">P</option>
+                            <option value="M">M</option>
+                            <option value="G">G</option>
+                            <option value="GG">GG</option>
+                        </select>
+                    </div>
+                    <div class="modal-quantidade">
+                        <label for="quantidade"><strong>Quantidade:</strong></label>
+                        <input type="number" id="quantidade" value="1" min="1" max="10">
+                    </div>
+                    <p class="modal-preco" id="modalPreco"></p>
+                    <button id="btnAdicionarCarrinho" class="btn-primary" type="button" style="width: 100%; margin-top: 20px;">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARRINHO -->
+    <div class="carrinho-sidebar" id="cartSidebar">
+        <div class="carrinho-header">
+            <h3>Seu Carrinho</h3>
+            <span class="close" onclick="toggleCart()">&times;</span>
+        </div>
+        <div class="carrinho-items" id="cartItems">
+            <p class="carrinho-vazio">Seu carrinho está vazio</p>
+        </div>
+        <div class="carrinho-frete">
+            <label for="cepFrete"><strong>Calcular frete</strong></label>
+            <input type="text" id="cepFrete" placeholder="Digite seu CEP" maxlength="9">
+            <button class="btn-secondary" type="button" onclick="calcularFrete()">Calcular</button>
+            <p id="freteMensagem" class="mensagem-cadastro" style="display:none;"></p>
+            <p id="shippingCostDisplay" class="frete-valor">Frete: R$ 0,00</p>
+        </div>
+        <div class="carrinho-total">
+            <h4>Total: <span id="totalCarrinho">R$ 0,00</span></h4>
+            <button class="btn-primary" style="width: 100%;" onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay" onclick="fecharModal(); toggleCart()"></div>
+
+    <!-- SOBRE -->
+    <section class="sobre-section" id="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <h2>Sobre a CamisetaStyle</h2>
+                <p>A CamisetaStyle nasceu para oferecer camisetas premium com qualidade, estilo e atendimento humano. Nossos produtos unem design exclusivo, materiais confortáveis e formas seguras de compra.</p>
+                <p>Trabalhamos com vendas online, entrega rápida e regras claras de troca. Nosso objetivo é transformar cada pedido em uma experiência simples e confiável.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <p>CamisetaStyle é sua loja de camisas premium com qualidade garantida.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📧 <a href="mailto:Omerion25@gmail.com">Omerion25@gmail.com</a></p>
+                    <p>📞 (11) 9999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <p>
+                        <a href="https://instagram.com/seuusuario" target="_blank" rel="noopener">Instagram</a> | 
+                        <a href="https://facebook.com/seuusuario" target="_blank" rel="noopener">Facebook</a> | 
+                        <a href="https://twitter.com/seuusuario" target="_blank" rel="noopener">Twitter</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CamisetaStyle. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

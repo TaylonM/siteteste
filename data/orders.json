@@ -1,0 +1,21 @@
+[
+  {
+    "id": "3b2140df-64f2-400e-adb3-b88feffb2e8d",
+    "usuarioId": "1acaedc9-b6fb-4e48-87ae-ff53e4978f36",
+    "itens": [
+      {
+        "id": 1,
+        "nome": "Camisa Cl�ssica Azul",
+        "preco": 89.9,
+        "quantidade": 1,
+        "tamanho": "M",
+        "cor": "#1E3A8A"
+      }
+    ],
+    "cep": "01000000",
+    "frete": 15.9,
+    "totalProdutos": 89.9,
+    "totalPedido": 105.8,
+    "criadoEm": "2026-09-08T19:04:31.611Z"
+  }
+]

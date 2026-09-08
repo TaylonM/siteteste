@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamisetaStyle | Camisas de Qualidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="logo">
+                <h1>CamisetaStyle</h1>
+            </div>
+            <button id="sidebarToggle" class="menu-toggle" aria-label="Abrir menu">⋯</button>
+        </div>
+        <nav class="nav" id="navMenu">
+            <a href="index.html" class="nav-link"><span class="text">Início</span></a>
+            <a href="index.html#produtos" class="nav-link"><span class="text">Produtos</span></a>
+            <a href="cadastro.html" class="nav-link"><span class="text">Cadastro</span></a>
+            <a href="login.html" class="nav-link"><span class="text">Login</span></a>
+            <a href="index.html#sobre" class="nav-link"><span class="text">Sobre</span></a>
+            <a href="index.html#contato" class="nav-link"><span class="text">Contato</span></a>
+        </nav>
+        <div class="side-actions">
+            <div id="userStatus" class="user-status"></div>
+            <button type="button" class="cart-button" onclick="toggleCart()">
+                <span class="cart-count" id="cartCount">0</span>
+                🛒 Carrinho
+            </button>
+        </div>
+    </aside>
+
+    <section class="cadastro-section" id="cadastro">
+        <div class="container">
+            <div class="intro-cadastro">
+                <h2>Cadastro do Cliente</h2>
+                <p>Preencha seus dados completos para facilitar suas compras, receber novidades e enviar documentos com segurança.</p>
+            </div>
+            <form id="formCadastro" class="cadastro-form" onsubmit="criarConta(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Senha mínima 6 caracteres" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmarSenha">Confirmar senha</label>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Digite a mesma senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nascimento">Data de nascimento</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rua">Rua</label>
+                        <input type="text" id="rua" name="rua" placeholder="Rua ou Avenida" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" name="numero" placeholder="Número" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" name="bairro" placeholder="Bairro" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="Cidade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input type="text" id="estado" name="estado" placeholder="Estado" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" name="complemento" placeholder="Apartamento, bloco, etc.">
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" name="observacoes" placeholder="Digite aqui se quiser incluir mais alguma informação"></textarea>
+                </div>
+                <div class="form-group checkbox-group full-width">
+                    <input type="checkbox" id="recebeNewsletter" name="recebeNewsletter">
+                    <label for="recebeNewsletter">Desejo receber promoções e novidades por e-mail</label>
+                </div>
+                <div class="form-actions full-width">
+                    <button type="submit" class="btn-primary">Criar Conta</button>
+                    <button type="button" class="btn-secondary" onclick="window.location.href='index.html'">Voltar à loja</button>
+                </div>
+                <p class="login-link">Já tem conta? <a href="login.html">Faça login aqui</a>.</p>
+                <div id="cadastroMensagem" class="mensagem-cadastro"></div>
+            </form>
+        </div>
+    </section>
+    <div class="carrinho-sidebar" id="cartSidebar">
+        <div class="carrinho-header">
+            <h3>Seu Carrinho</h3>
+            <span class="close" onclick="toggleCart()">&times;</span>
+        </div>
+        <div class="carrinho-items" id="cartItems">
+            <p class="carrinho-vazio">Seu carrinho está vazio</p>
+        </div>
+        <div class="carrinho-frete">
+            <label for="cepFrete"><strong>Calcular frete</strong></label>
+            <input type="text" id="cepFrete" placeholder="Digite seu CEP" maxlength="9">
+            <button class="btn-secondary" type="button" onclick="calcularFrete()">Calcular</button>
+            <p id="freteMensagem" class="mensagem-cadastro" style="display:none;"></p>
+            <p id="shippingCostDisplay" class="frete-valor">Frete: R$ 0,00</p>
+        </div>
+        <div class="carrinho-total">
+            <h4>Total: <span id="totalCarrinho">R$ 0,00</span></h4>
+            <button class="btn-primary" style="width: 100%;" onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="fecharModal(); toggleCart()"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📧 <a href="mailto:Omerion25@gmail.com">Omerion25@gmail.com</a></p>
+                    <p>📞 (11) 9999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <p>
+                        <a href="https://instagram.com/seuusuario" target="_blank" rel="noopener">Instagram</a> | 
+                        <a href="https://facebook.com/seuusuario" target="_blank" rel="noopener">Facebook</a> | 
+                        <a href="https://twitter.com/seuusuario" target="_blank" rel="noopener">Twitter</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CamisetaStyle. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

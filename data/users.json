@@ -1,0 +1,86 @@
+[
+  {
+    "id": "a7939d43-149b-42a7-8e96-fbc926699029",
+    "nome": "Teste Usuario",
+    "email": "testeusuario@example.com",
+    "telefone": "(11)99999-9999",
+    "cpf": "000.000.000-00",
+    "nascimento": "1990-01-01",
+    "endereco": {
+      "rua": "Rua A",
+      "numero": "123",
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01000000",
+      "complemento": "Apto 1"
+    },
+    "observacoes": "Teste",
+    "recebeNewsletter": true,
+    "passwordHash": "$2a$10$TdpGi4N2kMyzVMSHqLq.2efErmASnvlvRgoeNKBrDhd4mwqe6tGCe",
+    "criadoEm": "2026-08-06T06:32:18.602Z"
+  },
+  {
+    "id": "a76ad13b-fcfa-48f7-9cff-fb1fc0ee8f80",
+    "nome": "Teste Usuario",
+    "email": "testeuser@example.com",
+    "telefone": "11999999999",
+    "cpf": "12345678909",
+    "nascimento": "2000-01-01",
+    "endereco": {
+      "rua": "Rua Teste",
+      "numero": "123",
+      "bairro": "Centro",
+      "cidade": "S�o Paulo",
+      "estado": "SP",
+      "cep": "01000000",
+      "complemento": "Casa"
+    },
+    "observacoes": "",
+    "recebeNewsletter": false,
+    "passwordHash": "$2a$10$hkD8CAdxgR5ZGAWDPk.BZuhev6OazN/Pprt4tcJ1spcfkxT18AYq2",
+    "criadoEm": "2026-08-27T18:56:44.978Z"
+  },
+  {
+    "id": "646c6213-f347-4679-8a2c-8adc45cac98e",
+    "nome": "Teste Login",
+    "email": "tester_155442@mail.com",
+    "telefone": "11999999999",
+    "cpf": "12345678909",
+    "nascimento": "1990-01-01",
+    "endereco": {
+      "rua": "Rua A",
+      "numero": "123",
+      "bairro": "Centro",
+      "cidade": "Sao Paulo",
+      "estado": "SP",
+      "cep": "01000000",
+      "complemento": ""
+    },
+    "observacoes": "",
+    "recebeNewsletter": false,
+    "passwordHash": "$2a$10$LIyIw6Rb2qLutqvMxWfB7ur.rlMNuzucpMTem5oEbOfVfWg0pHd5C",
+    "criadoEm": "2026-09-08T18:54:42.600Z"
+  },
+  {
+    "id": "1acaedc9-b6fb-4e48-87ae-ff53e4978f36",
+    "nome": "Usuario Teste 3",
+    "email": "usuario.teste.3@email.com",
+    "telefone": "11999999999",
+    "cpf": "12345678909",
+    "nascimento": "1990-01-01",
+    "endereco": {
+      "rua": "Rua A",
+      "numero": "123",
+      "bairro": "Centro",
+      "cidade": "Sao Paulo",
+      "estado": "SP",
+      "cep": "01000000",
+      "complemento": ""
+    },
+    "observacoes": "",
+    "recebeNewsletter": false,
+    "passwordHash": "$2a$10$B6jsPC1KwXWSTBLrU/m2wOWzzm2BzFh1EwF0Pe.D.rOWdXU0Hh.NG",
+    "criadoEm": "2026-09-08T19:04:31.200Z"
+  }
+]
